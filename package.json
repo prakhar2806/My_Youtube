@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/prakhar2806/my_youtube#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.19"
   }
 }
