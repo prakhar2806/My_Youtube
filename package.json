@@ -1,0 +1,23 @@
+{
+  "name": "my_youtube",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prakhar2806/my_youtube.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prakhar2806/my_youtube/issues"
+  },
+  "homepage": "https://github.com/prakhar2806/my_youtube#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
