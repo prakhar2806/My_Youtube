@@ -11,15 +11,18 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
   const collection = client.db("youtube_videos_db").collection("youtube_videos_collection");
   // perform actions on the collection object
-  console.log("collection" + collection);
+  
   client.close();
 });
 
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/videos', video);
 
+app.use('/getVideo', (req,res) => {
+  res.send({ express: 'getVideo is connected' });
+});
 
 app.get('/express_backend', (req, res) => {
   res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
