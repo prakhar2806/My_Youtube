@@ -7,7 +7,13 @@ function NoVideos(props) {
 
 function ListItem(props) {
     // Correct! There is no need to specify the key here:
-    return <li>{props.value}</li>;
+    return (
+        <tr>
+            <td>{props.title}</td>
+            <td><a href={props.url}>{props.url}</a></td>
+            <td>{props.channelId}</td>
+        </tr>
+    )
 }
 
 function NumberList(props) {
@@ -15,12 +21,10 @@ function NumberList(props) {
     const listItems = numbers.map((number) =>
         // Correct! Key should be specified inside the array.
         <ListItem key={number.toString()}
-            value={number.url} />
+            url={number.url} title={number.title} channelId={number.channelId} />
     );
     return (
-        <ul>
-            {listItems}
-        </ul>
+        <>{listItems}</>
     );
 }
 
@@ -57,12 +61,27 @@ class VideoData extends Component {
 
     render() {
         let isVideoAvailable = this.state.data != null ? true : false;
+        console.log("this.state.data", this.state.data);
         if (isVideoAvailable) {
             return (
 
                 // <button type="submit">asdasdas</button>
                 // <a href={this.state.data}>click to navigate</a>
-                <NumberList value={this.state.data}></NumberList>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>URL</th>
+                            <th>ChannelId</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <NumberList value={this.state.data}></NumberList>
+                    </tbody>
+                </table>
+
+
             )
         }
         else {

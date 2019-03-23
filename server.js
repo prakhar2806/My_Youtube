@@ -7,9 +7,6 @@ const mongoose = require('mongoose');
 const video = require('./routes/video.route');
 const mongoConnect = require('./util/database').mongoconnect;
 
-
-
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
