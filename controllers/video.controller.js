@@ -103,7 +103,7 @@ exports.test = function (req, res) {
     }
 
 
-    //https://www.googleapis.com/youtube/v3/search?key=AIzaSyBMFhL1_FeYrSO5tUUvzVuJezQYr0no5RU&channelId=UCmf_VrB73I-eJ3fq0adaOkg&part=snippet,id&order=date&maxResults=20
+    
     /**
      * Lists the names and IDs of up to 10 files.
      *
