@@ -1,11 +1,60 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const getDb = require('../util/database').getDb;
+const mongoDb = require('mongodb');
 
-let videoSchema = new Schema({
-    name: {type: String, required: true, max: 100},
-    url: {type: String, required: true},
-});
+// const mongoose = require('mongoose');
+// const Schema = mongoose.Schema;
+
+
+class Video {
+    constructor(title, url, channelId) {
+        this.title = title;
+        this.url = url;
+        this.channelId = channelId;
+    }
+
+    save() {
+        const db = getDb();
+        return db.collection('videos').insertOne(this)
+            .then(result => {
+                console.log(result)
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+    static fetchAll() {
+        const db = getDb();
+
+        //find doesn't return promise, it return cursers  
+        return db.collection('videos')
+            .find()
+            .toArray()
+            .then(videos => {
+                console.log("videos", videos);
+                return videos;
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+    static findById(videoId) {
+        const db = getDb();
+
+        return db.collection('videos')
+            .find({ _id: new mongoDb.ObjectID(videoId) })
+            .next()
+            .then(videos => {
+                console.log("videos", videos);
+                return videos;
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+}
 
 
 // Export the model
-module.exports = mongoose.model('video', videoSchema);
+module.exports = Video;

@@ -1,4 +1,4 @@
-const video = require('../models/video.model');
+const Video = require('../models/video.model');
 
 
 exports.test = function (req, res) {
@@ -107,29 +107,29 @@ exports.test = function (req, res) {
      *
      * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
      */
-    function getChannel(auth) {
-        var service = google.youtube('v3');
-        service.channels.list({
-            auth: auth,
-            part: 'snippet,contentDetails,statistics',
-            forUsername: 'GoogleDevelopers'
-        }, function (err, response) {
-            if (err) {
-                console.log('The API returned an error: ' + err);
-                return;
-            }
-            var channels = response.data.items;
-            if (channels.length == 0) {
-                console.log('No channel found.');
-            } else {
-                console.log('This channel\'s ID is %s. Its title is \'%s\', and ' +
-                    'it has %s views.',
-                    channels[0].id,
-                    channels[0].snippet.title,
-                    channels[0].statistics.viewCount);
-            }
-        });
-    }
+   function getChannel(auth) {
+       var service = google.youtube('v3');
+       service.channels.list({
+           auth: auth,
+           part: 'snippet,contentDetails,statistics',
+           forUsername: 'GoogleDevelopers'
+       }, function (err, response) {
+           if (err) {
+               console.log('The API returned an error: ' + err);
+               return;
+           }
+           var channels = response.data.items;
+           if (channels.length == 0) {
+               console.log('No channel found.');
+           } else {
+               console.log('This channel\'s ID is %s. Its title is \'%s\', and ' +
+                   'it has %s views.',
+                   channels[0].id,
+                   channels[0].snippet.title,
+                   channels[0].statistics.viewCount);
+           }
+       });
+   }
 
 
     function getPlaylist(auth) {
@@ -144,7 +144,52 @@ exports.test = function (req, res) {
                 return;
             }
             res.send(response.data.items);
+            // res.send({ "express": "response sendsss" });
+            console.log("response send");
         });
     }
 
+};
+
+//working
+exports.addVideo = function (req, res, next) {
+
+    const title = req.body.title;
+    const url = req.body.url;
+    const channelId = req.body.channelId;
+    console.log(channelId, title, url);
+    const video = new Video(title, url, channelId);
+    video.save()
+        .then(result => {
+            res.send(result);
+            console.log(result);
+            console.log("video added");
+        }).catch(err => {
+            console.log(err);
+        })
+}
+
+//working
+exports.getAllVideos = function (req, res) {
+    Video.fetchAll()
+        .then(result => {
+            res.send(result);
+            console.log(result);
+            console.log("videos result");
+        }).catch(err => {
+            console.log(err);
+        })
+
+};
+
+//http://localhost:5000/videos/5c95ed341c9d440000e010cb
+//working
+exports.getOneVideo = function (req, res) {
+    const videoId = req.params.id;
+    console.log(videoId);
+    Video.findById(videoId)
+        .then(video => {
+            console.log("video", video);
+        })
+        .catch(err => console.log(err));
 };
