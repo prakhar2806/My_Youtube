@@ -176,8 +176,6 @@ exports.getAllVideos = function (req, res) {
     Video.fetchAll()
         .then(result => {
             res.send(result);
-            console.log(result);
-            console.log("videos result");
         }).catch(err => {
             console.log(err);
         })

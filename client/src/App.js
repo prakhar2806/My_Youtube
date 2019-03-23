@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import VideoData from './VideoData';
+import ChannelData from './ChannelData';
 
 class App extends Component {
 
@@ -13,10 +14,16 @@ class App extends Component {
   }
 
   render() {
+    const divStyle = {
+      margin: '40px',
+      border: '5px solid grey'
+    };
     return (
-      <div className="App">
-        <p className="App-intro">{this.state.data}</p>
-        <VideoData title="asdasd" />
+      <div className="App" >
+        <ChannelData></ChannelData>
+        <div style={divStyle}>
+          <VideoData title="asdasd" />
+        </div>
       </div>
     );
   }

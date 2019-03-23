@@ -61,14 +61,14 @@ class VideoData extends Component {
 
     render() {
         let isVideoAvailable = this.state.data != null ? true : false;
-        console.log("this.state.data", this.state.data);
+        
         if (isVideoAvailable) {
             return (
 
                 // <button type="submit">asdasdas</button>
                 // <a href={this.state.data}>click to navigate</a>
 
-                <table class="table">
+                <table className="table">
                     <thead>
                         <tr>
                             <th>Title</th>
