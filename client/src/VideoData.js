@@ -8,11 +8,6 @@ function NoVideos(props) {
 class ListItem extends Component {
     constructor(props) {
         super(props);
-        this.rowSelected = this.rowSelected.bind(this);
-    }
-
-    rowSelected(event) {
-        console.log("event.target.id", event.target.id);
     }
 
     render() {
@@ -21,7 +16,6 @@ class ListItem extends Component {
                 <td>{this.props.title}</td>
                 <td><a href={this.props.url}>{this.props.url}</a></td>
                 <td>{this.props.channelId}</td>
-                <td><button class="btn btn-outline-primary waves-effect" id={this.props.channelId} type="submit" onClick={this.rowSelected}>GetVideo</button></td>
             </tr>
         );
     }

@@ -16,7 +16,7 @@ class Video {
         const db = getDb();
         return db.collection('videos').insertOne(this)
             .then(result => {
-                console.log(result)
+                console.log("video added successfully");
             })
             .catch(err => {
                 console.log(err);
@@ -31,7 +31,6 @@ class Video {
             .find()
             .toArray()
             .then(videos => {
-                console.log("videos", videos);
                 return videos;
             })
             .catch(err => {

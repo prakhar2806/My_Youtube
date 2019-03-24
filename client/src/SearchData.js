@@ -99,9 +99,10 @@ class SearchData extends Component {
         if (isSearchResultAvailable) {
             return (
                 <div className="App">
+                <div style={searchBarStyle}>
                     <input type="text" id="searchInput" class="form-control" placeholder="Enter video title to search" />
                     <button type="submit" class="btn btn-default" onClick={this.handleClick}>Search Videos</button>
-
+                </div>
                 <div style={divStyle}>
                     <div class="header" id="myHeader" style={headerStyle}>
                         <h2 style={headerContent}>Search Result</h2>

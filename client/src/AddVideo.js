@@ -16,11 +16,13 @@ class AddVideo extends Component {
         let videoName = document.getElementById("title").value;
         let videoUrl = document.getElementById("url").value;
         let channelId = document.getElementById("cId").value;
+        this.exitModal();
+        alert("Please Referesh to see the Video Added !!!");
 
         this.callBackendAPI_AddVideo(videoName, videoUrl, channelId)
             .then(res => {
                 this.setState({ data: res });
-                this.exitModal();
+                
             })
             .catch(err => console.log(err));
     }

@@ -16,7 +16,7 @@ class Channel {
         const db = getDb();
         return db.collection('channels').insertOne(this)
             .then(result => {
-                console.log(result)
+                console.log(result,"SaveSuccess")
             })
             .catch(err => {
                 console.log(err);
@@ -31,7 +31,6 @@ class Channel {
             .find()
             .toArray()
             .then(channels => {
-                console.log("channels", channels);
                 return channels;
             })
             .catch(err => {

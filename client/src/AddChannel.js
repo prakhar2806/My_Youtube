@@ -16,11 +16,11 @@ class AddChannel extends Component {
     createChannel() {
         let channelName = document.getElementById("form3").value;
         let channelId = document.getElementById("form2").value;
-
+        this.exitModal();
+        alert("Please Referesh to see the Channel Added !!!");
         this.callBackendAPI_AddChannel(channelName, channelId)
             .then(res => {
                 this.setState({ data: res });
-                this.exitModal();
             })
             .catch(err => console.log(err));
     }
@@ -50,13 +50,13 @@ class AddChannel extends Component {
     exitModal() {
         document.getElementById("closeModelBtn_1").click();
     }
-    
+
 
 
     render() {
 
-        const buttonhidden={
-            display:'none'
+        const buttonhidden = {
+            display: 'none'
         }
 
         return (
