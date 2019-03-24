@@ -103,35 +103,35 @@ exports.test = function (req, res) {
     }
 
 
-    
+
     /**
      * Lists the names and IDs of up to 10 files.
      *
      * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
      */
-   function getChannel(auth) {
-       var service = google.youtube('v3');
-       service.channels.list({
-           auth: auth,
-           part: 'snippet,contentDetails,statistics',
-           forUsername: 'GoogleDevelopers'
-       }, function (err, response) {
-           if (err) {
-               console.log('The API returned an error: ' + err);
-               return;
-           }
-           var channels = response.data.items;
-           if (channels.length == 0) {
-               console.log('No channel found.');
-           } else {
-               console.log('This channel\'s ID is %s. Its title is \'%s\', and ' +
-                   'it has %s views.',
-                   channels[0].id,
-                   channels[0].snippet.title,
-                   channels[0].statistics.viewCount);
-           }
-       });
-   }
+    function getChannel(auth) {
+        var service = google.youtube('v3');
+        service.channels.list({
+            auth: auth,
+            part: 'snippet,contentDetails,statistics',
+            forUsername: 'GoogleDevelopers'
+        }, function (err, response) {
+            if (err) {
+                console.log('The API returned an error: ' + err);
+                return;
+            }
+            var channels = response.data.items;
+            if (channels.length == 0) {
+                console.log('No channel found.');
+            } else {
+                console.log('This channel\'s ID is %s. Its title is \'%s\', and ' +
+                    'it has %s views.',
+                    channels[0].id,
+                    channels[0].snippet.title,
+                    channels[0].statistics.viewCount);
+            }
+        });
+    }
 
 
     function getPlaylist(auth) {
@@ -184,12 +184,12 @@ exports.getAllVideos = function (req, res) {
 
 //http://localhost:5000/videos/5c95ed341c9d440000e010cb
 //working
-exports.getOneVideo = function (req, res) {
-    const videoId = req.params.id;
-    console.log(videoId);
-    Video.findById(videoId)
-        .then(video => {
-            console.log("video", video);
-        })
-        .catch(err => console.log(err));
-};
+// exports.getOneVideo = function (req, res) {
+//     const videoId = req.params.id;
+//     console.log(videoId);
+//     Video.findById(videoId)
+//         .then(video => {
+//             console.log("video", video);
+//         })
+//         .catch(err => console.log(err));
+// };

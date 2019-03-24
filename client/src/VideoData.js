@@ -46,7 +46,7 @@ class VideoData extends Component {
         this.state = {
             data: null,
         };
-
+        
     }
 
     componentDidMount() {
