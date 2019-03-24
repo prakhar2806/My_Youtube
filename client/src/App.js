@@ -51,9 +51,7 @@ class App extends Component {
             <AddVideo ></AddVideo>
           </div>
         </div>
-        <div style={divStyle}>
           <SearchData></SearchData>
-        </div>
         <div style={divStyle}>
           <ChannelData />
         </div>

@@ -73,8 +73,14 @@ class SearchData extends Component {
     render() {
         const divStyle = {
             margin: '40px',
-            // border: '5px solid grey'
+            border: '5px solid grey'
         };
+
+        const searchBarStyle={
+            margin:'20%',
+            marginTop:'1%',
+            marginBottom:'0'
+        }
 
         const headerStyle = {
             padding: '5px 8px',
@@ -92,10 +98,11 @@ class SearchData extends Component {
 
         if (isSearchResultAvailable) {
             return (
-                <div className="App" style={divStyle}>
+                <div className="App">
                     <input type="text" id="searchInput" class="form-control" placeholder="Enter video title to search" />
                     <button type="submit" class="btn btn-default" onClick={this.handleClick}>Search Videos</button>
 
+                <div style={divStyle}>
                     <div class="header" id="myHeader" style={headerStyle}>
                         <h2 style={headerContent}>Search Result</h2>
                     </div>
@@ -112,11 +119,12 @@ class SearchData extends Component {
                             <NumberList1 value={this.state.data}></NumberList1>
                         </tbody>
                     </table>
+                    </div>
                 </div>
             );
         } else {
             return (
-                <div className="App" style={divStyle}>
+                <div className="App" style={searchBarStyle}>
                     <input type="text" id="searchInput" class="form-control" placeholder="Enter video title to search" />
                     <button type="submit" class="btn btn-default" onClick={this.handleClick}>Search Videos</button>
                 </div>
