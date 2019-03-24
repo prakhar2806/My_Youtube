@@ -26,7 +26,7 @@ function NumberList1(props) {
     );
 }
 
-class ChannelData extends Component {
+class SearchData extends Component {
 
     constructor(props) {
         super(props);
@@ -110,4 +110,4 @@ class ChannelData extends Component {
     }
 }
 
-export default ChannelData;
+export default SearchData;

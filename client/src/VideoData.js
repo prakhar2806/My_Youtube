@@ -5,15 +5,26 @@ function NoVideos(props) {
     return <p>{props.value}</p>
 }
 
-function ListItem(props) {
-    // Correct! There is no need to specify the key here:
-    return (
-        <tr>
-            <td>{props.title}</td>
-            <td><a href={props.url}>{props.url}</a></td>
-            <td>{props.channelId}</td>
-        </tr>
-    )
+class ListItem extends Component {
+    constructor(props) {
+        super(props);
+        this.rowSelected = this.rowSelected.bind(this);
+    }
+
+    rowSelected(event) {
+        console.log("event.target.id", event.target.id);
+    }
+
+    render() {
+        return (
+            <tr>
+                <td>{this.props.title}</td>
+                <td><a href={this.props.url}>{this.props.url}</a></td>
+                <td>{this.props.channelId}</td>
+                <td><button class="btn btn-outline-primary waves-effect" id={this.props.channelId} type="submit" onClick={this.rowSelected}>GetVideo</button></td>
+            </tr>
+        );
+    }
 }
 
 function NumberList(props) {
@@ -61,7 +72,7 @@ class VideoData extends Component {
 
     render() {
         let isVideoAvailable = this.state.data != null ? true : false;
-        
+
         if (isVideoAvailable) {
             return (
 

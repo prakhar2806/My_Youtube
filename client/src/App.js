@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import VideoData from './VideoData';
-import ChannelData from './ChannelData';
+import SearchData from './SearchData';
 
 class App extends Component {
 
@@ -20,7 +20,7 @@ class App extends Component {
     };
     return (
       <div className="App" >
-        <ChannelData></ChannelData>
+        <SearchData></SearchData>
         <div style={divStyle}>
           <VideoData title="asdasd" />
         </div>
