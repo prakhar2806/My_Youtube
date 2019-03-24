@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import VideoData from './VideoData';
+
 
 
 class ListItem extends Component {
@@ -14,7 +14,6 @@ class ListItem extends Component {
 
     rowSelected(event) {
         this.setState({ channelId: event.target.id });
-        let vdodata = new VideoData();
     }
 
     render() {
@@ -95,9 +94,18 @@ class ChannelData extends Component {
     };
 
     render() {
-        const divStyle = {
-            margin: '40px',
-        };
+
+        const headerStyle = {
+            padding: '5px 8px',
+            background: '#188be2',
+            color: '#f1f1f1',
+            height: '50px'
+        }
+
+        const headerContent = {
+            padding: '0',
+            margin: '0'
+        }
 
         let isSearchResultAvailable = this.state.data != null ? true : false;
         let list = new ListItem();
@@ -106,19 +114,21 @@ class ChannelData extends Component {
         if (isSearchResultAvailable) {
             return (
                 <div className="App">
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>Channel Name</th>
-                                <th>ChannelId</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <ChannelList value={this.state.data}></ChannelList>
-                        </tbody>
-                    </table>
-                    <VideoData></VideoData>
-                </div>
+                        <div class="header" id="myHeader" style={headerStyle}>
+                            <h2 style={headerContent}>Channels List</h2>
+                        </div>
+                        <table className="table">
+                            <thead >
+                                <tr>
+                                    <th class="text-center">Channel Name</th>
+                                    <th class="text-center">ChannelId</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ChannelList value={this.state.data}></ChannelList>
+                            </tbody>
+                        </table>
+                    </div>
             );
         } else {
             return (

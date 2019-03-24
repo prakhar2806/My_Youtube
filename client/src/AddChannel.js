@@ -8,7 +8,8 @@ class AddChannel extends Component {
         this.state = {
             channelId: null,
         };
-        this.createChannel = this.createChannel.bind(this)
+        this.createChannel = this.createChannel.bind(this);
+        this.exitModal = this.exitModal.bind(this);
 
     }
 
@@ -16,15 +17,15 @@ class AddChannel extends Component {
         let channelName = document.getElementById("form3").value;
         let channelId = document.getElementById("form2").value;
 
-        this.callBackendAPI(channelName, channelId)
+        this.callBackendAPI_AddChannel(channelName, channelId)
             .then(res => {
                 this.setState({ data: res });
-                document.getElementById("closeModelBtn").click();
+                this.exitModal();
             })
             .catch(err => console.log(err));
     }
 
-    callBackendAPI = async (channelName, channelId) => {
+    callBackendAPI_AddChannel = async (channelName, channelId) => {
         const response = await fetch('/videos/addChannel', {
             method: "post",
             headers: {
@@ -46,8 +47,18 @@ class AddChannel extends Component {
         return body;
     };
 
+    exitModal() {
+        document.getElementById("closeModelBtn_1").click();
+    }
+    
+
 
     render() {
+
+        const buttonhidden={
+            display:'none'
+        }
+
         return (
             <div className="App" >
                 <div class="text-center">
@@ -59,26 +70,28 @@ class AddChannel extends Component {
                         <div class="modal-content">
                             <div class="modal-header text-center">
                                 <h4 class="modal-title w-100 font-weight-bold">Add New Channel</h4>
-                                <button type="button" id="closeModelBtn" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" id="closeModelBtn_1" class="close_1" data-dismiss="modal" aria-label="Close" style={buttonhidden}>
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body mx-3">
                                 <div class="md-form mb-5">
                                     <i class="fas fa-user prefix grey-text"></i>
-                                    <input type="text" id="form3" class="form-control validate" />
+                                    <input type="text" id="form3" class="form-control validate" placeholder="Enter Channel Name" />
                                     <label data-error="wrong" data-success="right" for="form3">Channel Name</label>
                                 </div>
 
                                 <div class="md-form mb-4">
                                     <i class="fas fa-envelope prefix grey-text"></i>
-                                    <input type="email" id="form2" class="form-control validate" />
+                                    <input type="email" id="form2" class="form-control validate" placeholder="Enter ChannelId" />
                                     <label data-error="wrong" data-success="right" for="form2">ChannelId</label>
                                 </div>
 
                             </div>
+
                             <div class="modal-footer d-flex justify-content-center">
-                                <button class="btn btn-indigo" onClick={this.createChannel}>Send <i class="fas fa-paper-plane-o ml-1"></i></button>
+                                <button class="btn btn-indigo" onClick={this.createChannel}>Save Channel <i class="fas fa-paper-plane-o ml-1"></i></button>
+                                <button class="btn btn-indigo" onClick={this.exitModal}> Cancel <i class="fas fa-paper-plane-o ml-1"></i></button>
                             </div>
                         </div>
                     </div>

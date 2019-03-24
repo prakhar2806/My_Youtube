@@ -76,14 +76,29 @@ class SearchData extends Component {
             // border: '5px solid grey'
         };
 
+        const headerStyle = {
+            padding: '5px 8px',
+            background: '#188be2',
+            color: '#f1f1f1',
+            height:'50px'
+        }
+
+        const headerContent={
+            padding:'0',
+            margin:'0'
+        }
+
         let isSearchResultAvailable = this.state.data != null ? true : false;
 
         if (isSearchResultAvailable) {
             return (
                 <div className="App" style={divStyle}>
-                    <input type="text" id="searchInput" />
-                    <button type="submit" onClick={this.handleClick}>Find By ChanneId</button>
-                    <p>Search Results</p>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Enter video title to search" />
+                    <button type="submit" class="btn btn-default" onClick={this.handleClick}>Search Videos</button>
+
+                    <div class="header" id="myHeader" style={headerStyle}>
+                        <h2 style={headerContent}>Search Result</h2>
+                    </div>
                     <table class="table">
                         <thead>
                             <tr>
@@ -102,8 +117,8 @@ class SearchData extends Component {
         } else {
             return (
                 <div className="App" style={divStyle}>
-                    <input type="text" id="searchInput" />
-                    <button type="submit" onClick={this.handleClick}>Find By ChanneId</button>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Enter video title to search" />
+                    <button type="submit" class="btn btn-default" onClick={this.handleClick}>Search Videos</button>
                 </div>
             );
         }
